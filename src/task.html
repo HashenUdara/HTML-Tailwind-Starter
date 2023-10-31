@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Basic HTML/Tailwind starter</title>
+    <meta name="description" content="Basic HTML/Tailwind starter" />
+    <meta name="author" content="Daily Dev Tips" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+<div class="bg-white">
+    <header class="bg-white lg:static lg:overflow-y-visible mx-8 mt-8 rounded-lg  drop-shadow-xl">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
+            <div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
+              <div class="flex flex-shrink-0 items-center">
+                <a href="./index.html">
+                  <img class="h-10 w-auto" src="./logo.svg" alt="Your Company">
+                </a>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
+              <div class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+                <div class="w-full">
+                  <label for="search" class="sr-only">Search</label>
+                  <div class="relative">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                      <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <input id="search" name="search" class="block w-full rounded-md border-0 bg-gray-100 font-light  py-2.5 pl-10 pr-3 text-gray-900  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand sm:text-xs  sm:leading-6" placeholder="Search for Task Next.." type="search">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
+              <!-- Mobile menu button -->
+              <button type="button" class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open menu</span>
+                <!--
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!--
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+              <button type="button" class="relative ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                </svg>
+              </button>
+      
+              <!-- Profile dropdown -->
+              <div class="relative ml-5 flex-shrink-0">
+                <div>
+                  <button type="button" class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span>
+                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  </button>
+                </div>
+      
+                <!--
+                  Dropdown menu, show/hide based on menu state.
+      
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+                <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <!-- Active: "bg-gray-100", Not Active: "" -->
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                </div>
+              </div>
+      
+              <a href="#" class="ml-6 inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  bg-indigo-50  text-brand  hover:bg-indigo-100">Sign in</a>
+              <a href="#" class="ml-2 inline-flex items-center rounded-md bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <nav class="lg:hidden" aria-label="Global">
+          <div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
+            <!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
+            <a href="#" aria-current="page" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Dashboard</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Calendar</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Teams</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Directory</a>
+          </div>
+          <div class="border-t border-gray-200 pb-3 pt-4">
+            <div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
+              <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </div>
+              <div class="ml-3">
+                <div class="text-base font-medium text-gray-800">Chelsea Hagon</div>
+                <div class="text-sm font-medium text-gray-500">chelsea.hagon@example.com</div>
+              </div>
+              <button type="button" class="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                </svg>
+              </button>
+            </div>
+            <div class="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Profile</a>
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Settings</a>
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign out</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+      
+  
+    <main class="mx-auto max-w-7xl sm:px-6 sm:pt-16 lg:px-8 mt-10">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <!-- Product -->
+        <div class="lg:grid lg:grid-cols-5 lg:items-start lg:gap-x-8">
+          <!-- Image gallery -->
+          <div class="flex flex-col-reverse col-span-3 ">
+            <!-- Image selector -->
+            <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+              <div class="grid grid-cols-4 gap-6" aria-orientation="horizontal" role="tablist">
+                <button id="tabs-2-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-2-panel-1" role="tab" type="button">
+                  <span class="sr-only">Angled view</span>
+                  <span class="absolute inset-0 overflow-hidden rounded-md">
+                    <img src="1.jpg" alt="" class="h-full w-full object-cover object-center">
+                  </span>
+                  
+                  <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+                  <span class="ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2" aria-hidden="true"></span>
+                </button>
+  
+                <button id="tabs-2-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-2-panel-1" role="tab" type="button">
+                    <span class="sr-only">Angled view</span>
+                    <span class="absolute inset-0 overflow-hidden rounded-md">
+                      <img src="1.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    
+                    <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+                    <span class="ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2" aria-hidden="true"></span>
+                  </button>
+  
+                  <button id="tabs-2-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-2-panel-1" role="tab" type="button">
+                    <span class="sr-only">Angled view</span>
+                    <span class="absolute inset-0 overflow-hidden rounded-md">
+                      <img src="1.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    
+                    <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+                    <span class="ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2" aria-hidden="true"></span>
+                  </button>
+  
+  
+                  <button id="tabs-2-tab-1" class="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4" aria-controls="tabs-2-panel-1" role="tab" type="button">
+                    <span class="sr-only">Angled view</span>
+                    <span class="absolute inset-0 overflow-hidden rounded-md">
+                      <img src="1.jpg" alt="" class="h-full w-full object-cover object-center">
+                    </span>
+                    
+                    <!-- Selected: "ring-indigo-500", Not Selected: "ring-transparent" -->
+                    <span class="ring-transparent pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2" aria-hidden="true"></span>
+                  </button>
+    
+                <!-- More images... -->
+              </div>
+            </div>
+  
+            <div class="aspect-h-3 aspect-w-4 w-full">
+              <!-- Tab panel, show/hide based on tab state. -->
+              <div id="tabs-2-panel-1" aria-labelledby="tabs-2-tab-1" role="tabpanel" tabindex="0">
+                <img src="2.jpg" alt="Angled front view with bag zipped and handles upright." class="h-full w-full object-cover object-center rounded-xl">
+              </div>
+              
+  
+              <!-- More images... -->
+            </div>
+          </div>
+
+
+
+
+  
+          <!-- Product info -->
+          <div class="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0 col-span-2">
+ 
+              <form class="bg-white drop-shadow-xl  sm:rounded-xl md:col-span-2 ">
+                <div class="px-14 py-14 sm:p-8">
+                  <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+                    <div class="sm:col-span-full">
+                        <label for="project" class="block text-sm font-normal leading-6 text-gray-900">Project Name</label>
+                        <div class="mt-2">
+                          <input id="project" name="project" type="text" autocomplete="project" placeholder="Project Name" class="block w-full rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset font-normal ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+          
+                      <div class="sm:col-span-full">
+                        <label for="phone-number" class="block text-sm font-normal leading-6 text-gray-900">Phone Number</label>
+                        <div class="relative mt-2 rounded-md shadow-sm">
+                          <div class="absolute inset-y-0 left-0 flex items-center">
+                            <label for="country" class="sr-only">Country</label>
+                            <select id="country" name="country" autocomplete="country" class="h-full rounded-md border-0 bg-transparent py-0 pl-3 pr-7 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                              <option>US</option>
+                              <option>CA</option>
+                              <option>EU</option>
+                            </select>
+                          </div>
+                          <input type="text" name="phone-number" id="phone-number" class="block w-full rounded-md border-0 py-3 pl-16 font-normal text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="+1 (555) 987-6543">
+                        </div>
+                      </div>
+
+                      
+
+                    <div class="sm:col-span-3">
+                      <label for="first-name" class="block text-sm  leading-6 text-gray-900">First name</label>
+                      <div class="mt-2">
+                        <input type="text" name="first-name" id="first-name" autocomplete="given-name" placeholder="First name" class="block w-full rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      </div>
+                    </div>
+          
+                    <div class="sm:col-span-3">
+                      <label for="last-name" class="block text-sm  leading-6 text-gray-900">Last name</label>
+                      <div class="mt-2">
+                        <input type="text" name="last-name" id="last-name" autocomplete="family-name" placeholder="Last Name" class="block w-full rounded-md border-0 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      </div>
+                    </div>
+          
+
+                    <div class="sm:col-span-full">
+                        <label for="location" class="block text-sm  leading-6 text-gray-900">Location</label>
+                        <div class="relative mt-2 rounded-md shadow-sm">
+                          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+
+                            <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                              </svg>
+                              
+                          </div>
+                          <input type="text" name="location" id="location" class="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Location">
+                        </div>
+                      </div>
+                      
+                      <div class="sm:col-span-full">
+                        <label for="comment" class="block text-sm leading-6 text-gray-900">Project Brief</label>
+                        <div class="mt-2">
+                          <textarea rows="4" name="comment" id="comment" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Project Brief"></textarea>
+                        </div>
+                      </div>
+
+
+                      <div class="sm:col-span-full">
+                        <button type="submit" class="inline-flex items-center gap-x-2 rounded-md bg-brand px-8 py-4 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 h-5 w-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                              </svg>
+                              
+                            Request a Quote
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-0.5 h-5 w-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                              </svg>
+                              
+                          </button>
+                      </div>
+                      
+
+                  </div>
+                </div>
+                
+              </form>
+          </div>
+        </div>
+  
+        <section aria-labelledby="related-heading" class="px-4 pb-16 sm:px-0">
+
+
+                <!-- Product info -->
+    <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+        <div class="lg:col-span-2  lg:pr-8">
+          <h1 class="text-2xl font-semibold tracking-normal text-gray-900 sm:text-3xl">Product Description</h1>
+        </div>
+  
+ 
+  
+        <div class="py-10 lg:col-span-2 lg:col-start-1  lg:pb-16 lg:pr-8 lg:pt-6">
+          <!-- Description and details -->
+          <div>
+            <h3 class="sr-only">Description</h3>
+  
+            <div class="space-y-6">
+              <p class="text-base text-gray-900 font-light">
+                When it's colder than the far side of the moon and spitting rain too, you've still got to look good. From water-repellent leather to a rugged outsole, the Lunar Force 1 adapts AF-1 style, so you can keep your flame burning when the weather hits. Metal lace hardware and extended tongue bring mountain boot toughness, while the star-studded toe design gives your look the edge            </p>
+            </div>
+          </div>
+  
+            <div class="mt-10">
+                <h3 class="text-lg font-medium text-gray-900">Benefits</h3>
+                <div class=" mt-4 col-span-2  text-sm leading-7 text-gray-600 ">
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Durable leather is easily cleanable so you can keep your look fresh.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="text-lg font-medium text-gray-900">Product Details</h3>
+                <div class=" mt-4 col-span-2  text-sm leading-7 text-gray-600 ">
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Durable leather is easily cleanable so you can keep your look fresh.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                    <div class="relative pl-9">
+                        <div class="font-light text-gray-600">
+                            <svg class="absolute left-0 top-1 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                            </svg>
+                            Water-repellent finish and internal membrane help keep your feet dry.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+      </div>
+
+
+
+
+          <h2 id="related-heading" class="text-xl font-bold text-gray-900">Customers also bought</h2>
+  
+          <div class="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+            <div>
+              <div class="relative">
+                <div class="relative h-72 w-full overflow-hidden rounded-lg">
+                  <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-related-product-01.jpg" alt="Front of zip tote bag with white canvas, black canvas straps and handle, and black zipper pulls." class="h-full w-full object-cover object-center">
+                </div>
+                <div class="relative mt-4">
+                  <h3 class="text-sm font-medium text-gray-900">Zip Tote Basket</h3>
+                  <p class="mt-1 text-sm text-gray-500">White and black</p>
+                </div>
+                <div class="absolute inset-x-0 top-0 flex h-72 items-end justify-end overflow-hidden rounded-lg p-4">
+                  <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"></div>
+                  <p class="relative text-lg font-semibold text-white">$140</p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <a href="#" class="relative flex items-center justify-center rounded-md border border-transparent bg-gray-100 px-8 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200">Add to bag<span class="sr-only">, Zip Tote Basket</span></a>
+              </div>
+            </div>
+  
+            <!-- More products... -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+
+
+
+
+
+
+
+
+  </div>
+
+  </body>
+  </html>

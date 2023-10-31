@@ -6,9 +6,769 @@
     <meta name="description" content="Basic HTML/Tailwind starter" />
     <meta name="author" content="Daily Dev Tips" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;700&display=swap" rel="stylesheet">
+
+
+
     <link rel="stylesheet" href="styles.css" />
+
   </head>
   <body>
-    <div class="w-screen h-screen bg-daily-dev-tips flex items-center justify-center">Welcome</div>
+    <div class="bg-white">
+      <header class="bg-white lg:static lg:overflow-y-visible mx-8 mt-8 rounded-lg  drop-shadow-xl">
+        <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+          <div class="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
+            <div class="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
+              <div class="flex flex-shrink-0 items-center">
+                <a href="#">
+                  <img class="h-10 w-auto" src="./logo.svg" alt="Your Company">
+                </a>
+              </div>
+            </div>
+            <div class="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
+              <div class="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
+                <div class="w-full">
+                  <label for="search" class="sr-only">Search</label>
+                  <div class="relative">
+                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                      <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                      </svg>
+                    </div>
+                    <input id="search" name="search" class="block w-full rounded-md border-0 bg-gray-100 font-light  py-2.5 pl-10 pr-3 text-gray-900  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brand sm:text-xs  sm:leading-6" placeholder="Search for Task Next.." type="search">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
+              <!-- Mobile menu button -->
+              <button type="button" class="relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open menu</span>
+                <!--
+                  Icon when menu is closed.
+      
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <!--
+                  Icon when menu is open.
+      
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden lg:flex lg:items-center lg:justify-end xl:col-span-4">
+              <button type="button" class="relative ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                </svg>
+              </button>
+      
+              <!-- Profile dropdown -->
+              <div class="relative ml-5 flex-shrink-0">
+                <div>
+                  <button type="button" class="relative flex rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span>
+                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  </button>
+                </div>
+      
+                <!--
+                  Dropdown menu, show/hide based on menu state.
+      
+                  Entering: "transition ease-out duration-100"
+                    From: "transform opacity-0 scale-95"
+                    To: "transform opacity-100 scale-100"
+                  Leaving: "transition ease-in duration-75"
+                    From: "transform opacity-100 scale-100"
+                    To: "transform opacity-0 scale-95"
+                -->
+                <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <!-- Active: "bg-gray-100", Not Active: "" -->
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                </div>
+              </div>
+      
+              <a href="#" class="ml-6 inline-flex items-center rounded-md  px-3 py-2 text-sm font-semibold shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  bg-indigo-50  text-brand  hover:bg-indigo-100">Sign in</a>
+              <a href="#" class="ml-2 inline-flex items-center rounded-md bg-brand px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <nav class="lg:hidden" aria-label="Global">
+          <div class="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
+            <!-- Current: "bg-gray-100 text-gray-900", Default: "hover:bg-gray-50" -->
+            <a href="#" aria-current="page" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Dashboard</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Calendar</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Teams</a>
+            <a href="#" class="hover:bg-gray-50 block rounded-md py-2 px-3 text-base font-medium">Directory</a>
+          </div>
+          <div class="border-t border-gray-200 pb-3 pt-4">
+            <div class="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
+              <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </div>
+              <div class="ml-3">
+                <div class="text-base font-medium text-gray-800">Chelsea Hagon</div>
+                <div class="text-sm font-medium text-gray-500">chelsea.hagon@example.com</div>
+              </div>
+              <button type="button" class="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                </svg>
+              </button>
+            </div>
+            <div class="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Profile</a>
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Settings</a>
+              <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign out</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+      
+    
+      <div>
+
+    
+        <main>
+          <div class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-screen-2xl lg:max-w-7xl lg:px-8">
+            <div class="py-24 text-center">
+              <h1 class="text-4xl font-extralight  mb-16 tracking-widest text-gray-800">Task Beyond Limits.</h1>
+              
+              <div>
+                <div class="sm:hidden">
+                  <label for="tabs" class="sr-only">Select a tab</label>
+                  <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
+                  <select id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+                    <option selected>Website Design</option>
+                    <option>Mobie Apps</option>
+                    <option >Maintenance</option>
+                    <option>Video Editing</option>
+                    <option>Graphic Design</option>
+                  </select>
+                </div>
+                <div class="hidden sm:block mt-10">
+                  <nav class="flex space-x-4 justify-center content-center" aria-label="Tabs">
+                    <!-- Current: "bg-indigo-100 text-indigo-700", Default: "text-gray-500 hover:text-gray-700" -->
+                    <a href="#" class="text-gray-800  font-medium rounded-md px-3 py-2 text-sm tracking-wider" aria-current="page">Website Design</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-light tracking-wider">Mobie Apps</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-light tracking-wider" >Maintenance</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-light tracking-wider">Video Editing</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-700 rounded-md px-3 py-2 text-sm font-light tracking-wider">Graphic Design</a>
+                  </nav>
+                </div>
+              </div>
+
+              
+            </div>
+    
+  
+    
+            <!-- Product grid -->
+            <section aria-labelledby="products-heading" class="mt-8 lg:mx-3">
+              <h2 id="products-heading" class="sr-only">Products</h2>
+
+              <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-14 lg:grid-cols-4  lg:gap-x-4 ">
+
+
+
+  
+          
+
+                <div class="group relative flex flex-col overflow-hidden  bg-white px-2 py-2 rounded-3xl drop-shadow-xl">
+                  <!-- <div class="aspect-h-2 aspect-w-4 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96 flex">
+                    <img src="1.jpg" alt="Front of plain black t-shirt." class="h-full  object-cover object-center sm:h-full sm:w-full">
+                    <img src="2.jpg" alt="Front of plain black t-shirt." class="h-full object-cover object-center sm:h-full sm:w-full">
+                  </div> -->
+ 
+
+
+
+                  <div class="flex flex-1 flex-col space-y-4 p-3.5 pb-8">
+                    <div class="flex justify-between">
+                    <span class="inline-flex items-center rounded-md bg-orange-100 px-2 py-1 text-xs font-light text-orange-800  w-fit">Low</span>
+
+                      <div class="relative inline-block text-left">
+                        <div>
+                          <button type="button" class="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open options</span>
+                            <svg class="h-5 w-5  rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                            </svg>
+                          </button>
+                        </div>
+                      
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+                      
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="absolute  hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                            <form method="POST" action="#" role="none">
+                              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-xl mt-2 font-medium text-gray-900">
+                      <a href="#">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Web Design
+                      </a>
+
+                    </h3>
+
+
+                  
+                  <div class="grid grid-cols-2 gap-3 w-full"> 
+                    <img src="4.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center sm:w-full">
+                    <img src="3.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center  sm:w-full">
+                  </div>
+
+
+
+                    <div class="flex justify-end mt-6 mb-6">
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light px-4 py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                          </svg>
+                          9 Comments
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                          </svg>
+                          
+                          
+                          10 Files
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                    <p class="text-sm text-gray-500">Our talented designers transform visions into stunning web interfaces, providing an exceptional user experience with every click.</p>
+                    
+                  </div>
+                </div>
+
+                <div class="group relative flex flex-col overflow-hidden  bg-white px-2 py-2 rounded-3xl drop-shadow-xl">
+                  <!-- <div class="aspect-h-2 aspect-w-4 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96 flex">
+                    <img src="1.jpg" alt="Front of plain black t-shirt." class="h-full  object-cover object-center sm:h-full sm:w-full">
+                    <img src="2.jpg" alt="Front of plain black t-shirt." class="h-full object-cover object-center sm:h-full sm:w-full">
+                  </div> -->
+ 
+
+
+
+                  <div class="flex flex-1 flex-col space-y-4 p-4 pb-8">
+                    <div class="flex justify-between">
+                    <span class="inline-flex items-center rounded-md bg-orange-100 px-2 py-1 text-xs font-light text-orange-800  w-fit">Low</span>
+
+                      <div class="relative inline-block text-left">
+                        <div>
+                          <button type="button" class="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open options</span>
+                            <svg class="h-5 w-5  rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                            </svg>
+                          </button>
+                        </div>
+                      
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+                      
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="absolute  hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                            <form method="POST" action="#" role="none">
+                              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-xl mt-2 font-medium text-gray-900">
+                      <a href="#">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Web Design
+                      </a>
+
+                    </h3>
+
+
+                  
+                  <div class="grid grid-cols-2 gap-4 w-full "> 
+                    <img src="4.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center sm:w-full">
+                    <img src="3.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center  sm:w-full">
+                  </div>
+
+
+
+                    <div class="flex justify-end mt-6 mb-6">
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light px-4 py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                          </svg>
+                          9 Comments
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                          </svg>
+                          
+                          
+                          10 Files
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                    <p class="text-sm text-gray-500">Our talented designers transform visions into stunning web interfaces, providing an exceptional user experience with every click.</p>
+                    
+                  </div>
+                </div>
+                <div class="group relative flex flex-col overflow-hidden  bg-white px-2 py-2 rounded-3xl drop-shadow-xl">
+                  <!-- <div class="aspect-h-2 aspect-w-4 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96 flex">
+                    <img src="1.jpg" alt="Front of plain black t-shirt." class="h-full  object-cover object-center sm:h-full sm:w-full">
+                    <img src="2.jpg" alt="Front of plain black t-shirt." class="h-full object-cover object-center sm:h-full sm:w-full">
+                  </div> -->
+ 
+
+
+
+                  <div class="flex flex-1 flex-col space-y-4 p-4 pb-8">
+                    <div class="flex justify-between">
+                    <span class="inline-flex items-center rounded-md bg-orange-100 px-2 py-1 text-xs font-light text-orange-800  w-fit">Low</span>
+
+                      <div class="relative inline-block text-left">
+                        <div>
+                          <button type="button" class="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open options</span>
+                            <svg class="h-5 w-5  rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                            </svg>
+                          </button>
+                        </div>
+                      
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+                      
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="absolute  hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                            <form method="POST" action="#" role="none">
+                              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-xl mt-2 font-medium text-gray-900">
+                      <a href="#">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Web Design
+                      </a>
+
+                    </h3>
+
+
+                  
+                  <div class="grid grid-cols-2 gap-4 w-full "> 
+                    <img src="4.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center sm:w-full">
+                    <img src="3.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center  sm:w-full">
+                  </div>
+
+
+
+                    <div class="flex justify-end mt-6 mb-6">
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light px-4 py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                          </svg>
+                          9 Comments
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                          </svg>
+                          
+                          
+                          10 Files
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                    <p class="text-sm text-gray-500">Our talented designers transform visions into stunning web interfaces, providing an exceptional user experience with every click.</p>
+                    
+                  </div>
+                </div>
+                <div class="group relative flex flex-col overflow-hidden  bg-white px-2 py-2 rounded-3xl drop-shadow-xl">
+                  <!-- <div class="aspect-h-2 aspect-w-4 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96 flex">
+                    <img src="1.jpg" alt="Front of plain black t-shirt." class="h-full  object-cover object-center sm:h-full sm:w-full">
+                    <img src="2.jpg" alt="Front of plain black t-shirt." class="h-full object-cover object-center sm:h-full sm:w-full">
+                  </div> -->
+ 
+
+
+
+                  <div class="flex flex-1 flex-col space-y-4 p-4 pb-8">
+                    <div class="flex justify-between">
+                    <span class="inline-flex items-center rounded-md bg-orange-100 px-2 py-1 text-xs font-light text-orange-800  w-fit">Low</span>
+
+                      <div class="relative inline-block text-left">
+                        <div>
+                          <button type="button" class="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open options</span>
+                            <svg class="h-5 w-5  rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                            </svg>
+                          </button>
+                        </div>
+                      
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+                      
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="absolute  hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                            <form method="POST" action="#" role="none">
+                              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-xl mt-2 font-medium text-gray-900">
+                      <a href="#">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Web Design
+                      </a>
+
+                    </h3>
+
+
+                  
+                  <div class="grid grid-cols-2 gap-4 w-full "> 
+                    <img src="4.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center sm:w-full">
+                    <img src="3.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center  sm:w-full">
+                  </div>
+
+
+
+                    <div class="flex justify-end mt-6 mb-6">
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light px-4 py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                          </svg>
+                          9 Comments
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                          </svg>
+                          
+                          
+                          10 Files
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                    <p class="text-sm text-gray-500">Our talented designers transform visions into stunning web interfaces, providing an exceptional user experience with every click.</p>
+                    
+                  </div>
+                </div>
+                <div class="group relative flex flex-col overflow-hidden  bg-white px-2 py-2 rounded-3xl drop-shadow-xl">
+                  <!-- <div class="aspect-h-2 aspect-w-4 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96 flex">
+                    <img src="1.jpg" alt="Front of plain black t-shirt." class="h-full  object-cover object-center sm:h-full sm:w-full">
+                    <img src="2.jpg" alt="Front of plain black t-shirt." class="h-full object-cover object-center sm:h-full sm:w-full">
+                  </div> -->
+ 
+
+
+
+                  <div class="flex flex-1 flex-col space-y-4 p-4 pb-8">
+                    <div class="flex justify-between">
+                    <span class="inline-flex items-center rounded-md bg-orange-100 px-2 py-1 text-xs font-light text-orange-800  w-fit">Low</span>
+
+                      <div class="relative inline-block text-left">
+                        <div>
+                          <button type="button" class="flex items-center rounded-full  text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <span class="sr-only">Open options</span>
+                            <svg class="h-5 w-5  rotate-90" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z" />
+                            </svg>
+                          </button>
+                        </div>
+                      
+                        <!--
+                          Dropdown menu, show/hide based on menu state.
+                      
+                          Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                          Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="absolute  hidden right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                          <div class="py-1" role="none">
+                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                            <form method="POST" action="#" role="none">
+                              <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 class="text-xl mt-2 font-medium text-gray-900">
+                      <a href="#">
+                        <span aria-hidden="true" class="absolute inset-0"></span>
+                        Web Design
+                      </a>
+
+                    </h3>
+
+
+                  
+                  <div class="grid grid-cols-2 gap-4 w-full "> 
+                    <img src="4.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center sm:w-full">
+                    <img src="3.png" alt="Front of plain black t-shirt." class="h-24 rounded-lg object-cover object-center  sm:w-full">
+                  </div>
+
+
+
+                    <div class="flex justify-end mt-6 mb-6">
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light px-4 py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                          </svg>
+                          9 Comments
+                        </a>
+                      </div>
+
+                      <div>
+                        <a href="#" class="text-gray-500 group flex items-center font-light py-2 text-sm group-hover:text-gray-700" role="menuitem" tabindex="-1" id="menu-item-1">
+       
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  class="mr-2 h-5 w-5 text-gray-500 group-hover:text-gray-700">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13.5H9m4.06-7.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
+                          </svg>
+                          
+                          
+                          10 Files
+                        </a>
+                      </div>
+
+                      
+                    </div>
+                    <p class="text-sm text-gray-500">Our talented designers transform visions into stunning web interfaces, providing an exceptional user experience with every click.</p>
+                    
+                  </div>
+                </div>
+          
+
+          
+
+     
+          
+
+
+          
+                
+
+                
+                <!-- More products... -->
+              </div>
+            </section>
+    
+          </div>
+        </main>
+    
+
+
+
+
+
+        <footer class="bg-white " aria-labelledby="footer-heading ">
+          
+          <div class="mx-auto max-w-screen-2xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32 ">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8 border-t border-gray-900/10 pt-12 ">
+              <div class="space-y-8">
+                <img class="h-10" src="logo.svg" alt="Company name">
+                <p class="text-sm leading-6 text-gray-600">Making the world a better place through constructing elegant hierarchies.</p>
+
+
+              </div>
+              <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                <div class="md:grid md:grid-cols-2 md:gap-8">
+                  <div>
+                    <h3 class="text-sm font-semibold leading-6 text-gray-900">Services</h3>
+                    <ul role="list" class="mt-6 space-y-4">
+                      <li>
+                        <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Email Marketing</a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Campaigns</a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                  <div class="mt-10 md:mt-0">
+                    <h3 class="text-sm font-semibold leading-6 text-gray-900">About</h3>
+                    <ul role="list" class="mt-6 space-y-4">
+                      <li>
+                        <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Our Story</a>
+                      </li>
+                      <li>
+                        <a href="#" class="text-sm leading-6 text-gray-600 hover:text-gray-900">Benefits</a>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+                <div class="md:grid md:grid-cols-2 md:gap-8">
+                  <div>
+                    <h3 class="text-sm font-semibold leading-6 text-gray-900">Follow us</h3>
+                                    
+                    <div class="mt-6 flex space-x-6">
+                      <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+   
+                      <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                      </a>
+
+                      <a href="#" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+
+                    </div>
+
+
+
+                  </div>
+ 
+                </div>
+              </div>
+            </div>
+            <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
+              <p class="text-xs font-light text-center leading-5 text-gray-500">Copyright &copy; 2024. taskNex.com. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+
+        
+
+
+
+      </div>
+    </div>
+
+
+
   </body>
 </html>
+
