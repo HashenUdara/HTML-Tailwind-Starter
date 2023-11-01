@@ -8,16 +8,17 @@ module.exports = {
     },
     
     fontFamily: {
-      sans: ['Mona Sans', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      sans: ['Manrope', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       display: [
-        ['Mona Sans', ...defaultTheme.fontFamily.sans],
-        { fontVariationSettings: '"wdth" 125' },
+        ['Manrope' , 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       ],
     },
 
   },
   variants: {
-    extend: {},
+    extend: {
+     
+    },
   },
   plugins: [
     require('@tailwindcss/forms'),
