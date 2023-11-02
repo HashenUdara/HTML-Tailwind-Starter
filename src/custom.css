@@ -9,3 +9,26 @@ html.is-changing .transition-fade {
   html.is-animating .transition-fade {
     opacity: 0;
   }
+
+
+
+  /*-----------------------------------*\
+  #SCROLL ANIMATIONS
+\*-----------------------------------*/
+
+
+[data-reveal] {
+    transform: translateY(50px);
+    opacity: 0;
+    --transition-3: 0.5s ease;
+    transition: var(--transition-3);
+  }
+  
+  [data-reveal="left"] { transform: translate(-50px, 0); }
+  
+  [data-reveal="right"] { transform: translate(50px, 0); }
+  
+  [data-reveal].revealed {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
