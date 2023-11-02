@@ -522,6 +522,8 @@
           </div>
         </section>
       </div>
+
+  
     </main>
 
 
@@ -533,6 +535,7 @@
 
 
   </div>
+  <script src="./sw.js"></script>
   <script type="module">
     import Swup from 'https://unpkg.com/swup@4?module';
     const swup = new Swup();
@@ -557,36 +560,50 @@ scrollReveal();
 window.addEventListener("scroll", scrollReveal);
 }
 
+
 // Initialize scroll reveal on initial page load
 initScrollReveal();
-swup.hooks.on('page:view', initScrollReveal)
-
-  </script>
 
 
-  <!-- Swiper JS -->
-  <script src="./sw.js"></script>
 
-  <!-- Initialize Swiper -->
-  <script>
+
+function initSwiper() {
     var swiper = new Swiper(".mySwiper", {
-      loop: true,
-      spaceBetween: 10,
-      slidesPerView: 4,
-      freeMode: true,
-      watchSlidesProgress: true,
-    });
-    var swiper2 = new Swiper(".mySwiper2", {
-      loop: true,
-      spaceBetween: 10,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      thumbs: {
-        swiper: swiper,
-      },
-    });
+    loop: true,
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper2 = new Swiper(".mySwiper2", {
+    loop: true,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper,
+    },
+  });
+  console.log("shsdjs") };
+
+  initSwiper();
+
+
+
+swup.hooks.on('page:view', initScrollReveal)
+swup.hooks.on('page:view', initSwiper)
+
   </script>
+<!-- Swiper JS -->
+
+
+<!-- Initialize Swiper -->
+<script>
+
+
+</script>
+
   </body>
   </html>
