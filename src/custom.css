@@ -10,7 +10,14 @@ html.is-changing .transition-fade {
     opacity: 0;
   }
 
-
+  .loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Add your spinner styles (e.g., width, height, animation) here */
+  }
+  
 
   /*-----------------------------------*\
   #SCROLL ANIMATIONS
@@ -32,3 +39,16 @@ html.is-changing .transition-fade {
     transform: translate(0, 0);
     opacity: 1;
   }
+
+
+
+  #menu.show-menu {
+    max-height: 1000px; /* Adjust to a suitable value */
+    opacity: 1;
+  }
+
+.my-h-0{
+  height: 0;
+  transition: height 3s ease-out;
+}
+  
