@@ -164,17 +164,7 @@
       <p>Copyright &copy; <span x-text="new Date().getFullYear()"></span></p>
     </footer>
 
-    <script>
-      document.addEventListener("alpine:init", () => {
-        Alpine.store("darkMode", {
-          on: false,
-
-          toggle() {
-            this.on = !this.on;
-          },
-        });
-      });
-    </script>
+    <script></script>
 
     <script type="module">
       import Swup from "https://unpkg.com/swup@4?module";
@@ -203,6 +193,19 @@
 
       // Initialize scroll reveal on initial page load
       initScrollReveal();
+      function init() {
+        document.addEventListener("alpine:init", () => {
+          Alpine.store("darkMode", {
+            on: false,
+
+            toggle() {
+              this.on = !this.on;
+            },
+          });
+        });
+      }
+
+      init();
 
       function initSwiper() {
         var swiper = new Swiper(".mySwiper", {
@@ -244,6 +247,7 @@
 
       swup.hooks.on("page:view", initScrollReveal);
       swup.hooks.on("page:view", initSwiper);
+      swup.hooks.on("page:view", init);
     </script>
   </body>
 </html>
