@@ -638,30 +638,6 @@
         </div>
       </div>
     </div>
-    <div x-data="{ searchQ: '', suggestions: [] }">
-      <input x-model="searchQ" @input="fetchSearchResults" />
-
-      <ul>
-        <template x-for="suggestion in suggestions" :key="suggestion.id">
-          <li
-            x-text="`Heading: ${suggestion.heading}, Sub-Heading: ${suggestion.sub_heading}, Tagline: ${suggestion.tagline}`"
-          ></li>
-        </template>
-      </ul>
-    </div>
-
-    <script>
-      function fetchSearchResults() {
-        const searchQ = this.searchQ;
-
-        fetch(`http://localhost:3000/search/suggestions?q=${searchQ}`)
-          .then((response) => response.json())
-          .then((data) => {
-            this.suggestions = data.suggestions;
-          })
-          .catch((error) => console.error(error));
-      }
-    </script>
 
     <script defer>
       document.addEventListener("alpine:init", () => {
