@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine.js To-Do App</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body x-data="app()">
+    <div>
+      <h1>To-Do App</h1>
+      <button @click="openModal">Add Task</button>
+    </div>
+
+    <!-- Task List -->
+    <ul>
+      <li x-for="(task, index) in tasks" :key="index">
+        <span>{{ task.id }}</span>
+        <span>{{ task.description }}</span>
+        <span>{{ task.percentage }}%</span>
+      </li>
+    </ul>
+
+    <!-- Add Task Modal -->
+    <div
+      x-show="isModalOpen"
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      @click="closeModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div
+        style="
+          background: white;
+          max-width: 400px;
+          margin: 100px auto;
+          padding: 20px;
+          border-radius: 5px;
+        "
+      >
+        <h2>Add Task</h2>
+
+        <input type="hidden" x-model="projectId" />
+        <input
+          type="text"
+          x-model="progressDesc"
+          placeholder="Enter task description"
+          required
+        />
+        <input
+          type="number"
+          x-model="progressPerc"
+          placeholder="Enter percentage"
+          required
+        />
+
+        <button @click="submitTask">Submit</button>
+      </div>
+    </div>
+
+    <script>
+      function app() {
+        return {
+          isModalOpen: false,
+          tasks: [],
+          projectId: "",
+          progressDesc: "",
+          progressPerc: "",
+
+          openModal() {
+            // Assuming you set the project ID before opening the modal
+            this.projectId = "your_project_id";
+            this.isModalOpen = true;
+          },
+
+          closeModal(event) {
+            if (event.target === event.currentTarget) {
+              this.isModalOpen = false;
+            }
+          },
+
+          submitTask() {
+            axios
+              .post("/api/tasks", {
+                project_id: this.projectId,
+                progress_desc: this.progressDesc,
+                progress_perc: this.progressPerc,
+              })
+              .then((response) => {
+                // Assuming the server responds with the updated task list
+                this.tasks = response.data.tasks;
+                this.projectId = "";
+                this.progressDesc = "";
+                this.progressPerc = "";
+                this.isModalOpen = false;
+              })
+              .catch((error) => {
+                console.error("Error submitting task:", error);
+              });
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

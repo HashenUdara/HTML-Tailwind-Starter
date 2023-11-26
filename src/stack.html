@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="jq.dt.min.css" />
+  </head>
+  <body>
+    <div class="flex justify-center">
+      <div class="card border-none border-0" id="card">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table id="example" class="table responsive nowrap" width="100%">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Stuff 1</th>
+                  <th>Stuff 2</th>
+                  <th>Stuff 3</th>
+                  <th>Stuff 4</th>
+                  <th>Stuff 5</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="1.jpg" class="aspect-[1/1]" width="70px" alt="" />
+                  </td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>
+                    <span
+                      class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
+                      >Badge</span
+                    >
+                  </td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+
+                  <td>
+                    <div class="dropdown">
+                      <!-- <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Dropdown button
+                      </button> -->
+                      <button
+                        type="button"
+                        class="flex items-center rounded-full bg-gray-100 text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <span class="sr-only">Open options</span>
+                        <svg
+                          class="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M10 3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM10 8.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM11.5 15.5a1.5 1.5 0 10-3 0 1.5 1.5 0 003 0z"
+                          />
+                        </svg>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Hashen Udara</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+                  <td>2011-04-25</td>
+
+                  <td>
+                    <div class="dropdown">
+                      <button
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Dropdown button
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $(document).ready(function () {
+          $("#example").DataTable({});
+        });
+
+        let parents = [];
+        let menus = [];
+
+        // and when you show it, move it to the body
+        $(window).on("show.bs.dropdown", function (e) {
+          let target = $(e.target);
+
+          // save the parent
+          parents.push(target.parent());
+
+          // grab the menu
+          let dropdownMenu = target.next();
+
+          // save the menu
+          menus.push(dropdownMenu);
+
+          // detach it and append it to the body
+          $("body").append(dropdownMenu.detach());
+
+          // grab the new offset position
+          let eOffset = target.offset();
+
+          // make sure to place it where it would normally go (this could be improved)
+          dropdownMenu.css({
+            display: "block",
+            top: eOffset.top + target.outerHeight(),
+            left: eOffset.left,
+          });
+        });
+
+        // and when you hide it, reattach the drop down, and hide it normally
+        $(window).on("hide.bs.dropdown", function (e) {
+          menus.forEach(function (element, index) {
+            let parent = parents[index];
+            let dropdownMenu = element;
+
+            parent.append(dropdownMenu.detach());
+            dropdownMenu.hide();
+
+            menus.splice(index, 1);
+            parents.splice(index, 1);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
